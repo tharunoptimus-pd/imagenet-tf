@@ -3,6 +3,8 @@ let predict = document.getElementById('predict');
 let canvas = document.getElementById('canvas');
 let predictionDiv = document.querySelector('.predictionDiv');
 
+let model = tf.loadLayersModel('/model/model.json').then( _ => console.log("Loaded Converted CNN Model"))
+
 let renderTableHTML = (array) => {
   let html = ``;
   html += `<table>
@@ -53,15 +55,6 @@ predict.addEventListener('click', async () => {
   console.log(predictions);
   updateResults(predictions);
 });
-
-// Load the model.
-// mobilenet.load().then((model) => {
-//   // Classify the image.
-//   model.classify(img).then((predictions) => {
-//     console.log('Predictions: ');
-//     console.log(predictions);
-//   });
-// });
 
 document.getElementById('inp').onchange = function (e) {
   var img = new Image();
