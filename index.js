@@ -1,6 +1,13 @@
-// Import stylesheets
-import './style.css';
+// Notice there is no 'import' statement. 'mobilenet' and 'tf' is
+// available on the index-page because of the script tag above.
 
-// Write Javascript code!
-const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS Starter</h1>`;
+const img = document.getElementById('img');
+
+// Load the model.
+mobilenet.load().then((model) => {
+  // Classify the image.
+  model.classify(img).then((predictions) => {
+    console.log('Predictions: ');
+    console.log(predictions);
+  });
+});
